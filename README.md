@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Ethereum-MultiSigWallet
 Open-source multi-sig wallet for the Ethereum blockchain.
 =======
@@ -44,4 +43,3 @@ Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_
 ```shell
 npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 ```
->>>>>>> setup
