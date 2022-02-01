@@ -1,9 +1,10 @@
-import { ConnectWallet } from "../components/ConnectWallet"
+import { MenuBar } from "../components/MenuBar";
 
 export default function Home() {
+  
   return (
     <div>
-      <ConnectWallet />
+      <MenuBar/>
     </div>
   )
 }

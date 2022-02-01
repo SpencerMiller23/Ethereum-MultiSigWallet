@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
+import Button from '@mui/material/Button';
+
 const ConnectWallet = () => {
-    const [buttonText, setButtonText] = useState('Connect')
-    const [defaultAccount, setDefaultAccount] = useState()
+    const [account, setAccount] = useState()
     const [userBalance, setUserBalance] = useState()
     const [error, setError] = useState()
 
@@ -22,7 +23,7 @@ const ConnectWallet = () => {
 
     const accountChangedHandler = async (signer) => {
         const account = await signer.getAddress()
-        setDefaultAccount(account)
+        setAccount(account)
         getUserBalance(signer)
     }
 
@@ -33,13 +34,12 @@ const ConnectWallet = () => {
 
     return(
         <div>
-            <h1>Connect Wallet</h1>
-            <button onClick={connectWalletHandler}>{buttonText}</button>
-            <h3>{defaultAccount}</h3>
-            <h3>{userBalance} ETH</h3>
-            <p>{error}</p>
+            <div>
+                <h3>{account}</h3>
+                <Button variant="contained" onClick={connectWalletHandler}>Connect</Button>
+            </div>
         </div>
     )
 };
 
-export default ConnectWallet;
+export default ConnectWallet
