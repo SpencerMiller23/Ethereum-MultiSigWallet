@@ -12,6 +12,6 @@ describe("Factory", function () {
     it("Deploy MultiSigWallet contract", async function() {
         const [owner, ...accounts] = await ethers.getSigners();
         await factory.createWallet([owner.address, accounts[0].address], 2);
-        await expect(factory.wallets(1)).not.to.be.null;
+        await expect(factory.wallets(0)).not.to.be.null;
     });
 });

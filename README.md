@@ -7,11 +7,19 @@ This is an open-source implementation of an Ethereum multi-sig wallet with a Rea
 Feel free to get started and make a contribution to this project, no matter how small!
 
 ## Useful links
+
 - [Solidity](https://docs.soliditylang.org/en/v0.8.11/)
 - [Hardhat](https://hardhat.org/)
 - [Ethers.js](https://docs.ethers.io/v5/)
 - [Waffle](https://ethereum-waffle.readthedocs.io/en/latest/)
 - [Next.js](https://nextjs.org/)
+
+## Deploy locally
+
+1) Open a terminal window and run `npx hardhat node`
+2) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
+3) Copy the address of the deployed factory contract and update the value stored in `config.js`
+4) Open a third terminal window and run `npm run dev`
 
 ## Hardhat
 
