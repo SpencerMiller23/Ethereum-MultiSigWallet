@@ -4,9 +4,10 @@ import Web3Modal from 'web3modal'
 
 import Button from '@mui/material/Button';
 
+import styles from './ConnectWallet.module.css'
+
 const ConnectWallet = () => {
     const [account, setAccount] = useState()
-    const [userBalance, setUserBalance] = useState()
     const [error, setError] = useState()
 
     const connectWalletHandler = async () => {
@@ -24,20 +25,12 @@ const ConnectWallet = () => {
     const accountChangedHandler = async (signer) => {
         const account = await signer.getAddress()
         setAccount(account)
-        getUserBalance(signer)
-    }
-
-    const getUserBalance = async (signer) => {
-        const balance = await signer.getBalance()
-        setUserBalance(ethers.utils.formatEther(balance))
     }
 
     return(
-        <div>
-            <div>
-                <h3>{account}</h3>
-                <Button variant="contained" onClick={connectWalletHandler}>Connect</Button>
-            </div>
+        <div className={styles.connectWallet__container}>
+            <p className={styles.address}>{account}</p>
+            <Button variant="contained" color="secondary" onClick={connectWalletHandler}>Connect</Button>
         </div>
     )
 };

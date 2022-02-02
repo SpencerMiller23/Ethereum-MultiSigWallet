@@ -1,0 +1,10 @@
+.connectWallet__container {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.address {
+    padding-right: 20px;
+}

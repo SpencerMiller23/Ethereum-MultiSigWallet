@@ -1,0 +1,4 @@
+.drawer__container {
+    width: 240px;
+    height: calc(100vh - 64px);
+}
