@@ -3,11 +3,10 @@ import { Drawer } from "../components/Drawer";
 import { CreateWallet } from "../components/CreateWallet";
 
 export default function Home() {
-  
   return (
     <div>
       <MenuBar/>
-      <div className="flex flex-row">
+      <div className="flex flex-row mt">
         <Drawer/>
         <CreateWallet/>
       </div>

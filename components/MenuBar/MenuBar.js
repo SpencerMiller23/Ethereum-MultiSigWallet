@@ -12,7 +12,7 @@ const MenuBar = () => {
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
+                <AppBar position="static" position="absolute">
                     <Toolbar className={styles.toolbar}>
                         <h3>Multi-Sig Wallet</h3>
                         <ConnectWallet/>
