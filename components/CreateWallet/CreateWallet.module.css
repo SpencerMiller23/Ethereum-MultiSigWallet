@@ -1,0 +1,35 @@
+.form__top {
+    display: flex;
+    flex-direction: column;
+}
+
+.button__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.button__container button {
+    margin: 0px 7.5px;
+}
+
+.form__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__bottom > div, .form__bottom > button {
+    margin: 0px 7.5px;
+}
+
+@media screen and (min-width: 768px) {
+    .button__container {
+        flex-direction: row;
+    }
+
+    .form__bottom {
+        flex-direction: row;
+    }
+}
