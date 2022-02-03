@@ -44,8 +44,8 @@ const CreateWallet = () => {
             let tx = await factory.createWallet(owners, requiredRef.current.value)
             let receipt = await tx.wait()
             console.log(receipt)
-        } catch (error) {
-            setError(error.message)
+        } catch (e) {
+            setError(e.message)
             console.log(error)
         }
     }

@@ -9,14 +9,16 @@ contract Factory {
     uint256 internal nextId = 0;
     MultiSigWallet internal multiSigWallet;
 
-    function createWallet(address[] memory _owners, uint _required) public returns (address _wallet) {
+    event WalletCreated(address indexed wallet);
+
+    function createWallet(address[] memory _owners, uint _required) public {
         multiSigWallet = new MultiSigWallet(_owners, _required);
         wallets.push(address(multiSigWallet));
         for (uint i = 0; i < _owners.length; i++) {
             walletIdMapping[_owners[i]] = nextId;
         }
         nextId++;
-        return address(multiSigWallet);
+        emit WalletCreated(address(multiSigWallet));
     }
 
 }
