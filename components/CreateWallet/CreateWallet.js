@@ -18,36 +18,49 @@ const CreateWallet = () => {
 
     const createWalletHandler = async () => {
         try {
-            const web3Modal = new Web3Modal()
-            const connection = await web3Modal.connect()
-            const provider = new ethers.providers.Web3Provider(connection)
-            const signer = provider.getSigner()
+            const signer = await getSignerAccount();
+            let [owners, required] = getFormInput();
 
-            let owners = []
-            let inputs = accountRef.current.childNodes
-            let required = requiredRef.current.value
-
-            if (required < 1 || required > numAccounts || required === "") {
-                throw new Error('Required number of accounts must be between 1 and the number of accounts')
-            }
-
-            for (let i = 0; i < inputs.length; i++) {
-                let inputValue = inputs[i].childNodes[1].childNodes[0].value
-                if (inputValue !== "") {
-                    owners.push(inputValue)
-                } else {
-                    throw new Error('Please remove any blank accounts')
-                }
-            }
-            
-            let factory = new ethers.Contract(factoryAddress, Factory.abi, signer)
-            let tx = await factory.createWallet(owners, requiredRef.current.value)
-            let receipt = await tx.wait()
-            console.log(receipt)
+            await deployNewWallet(factoryAddress, Factory.abi, signer, owners, required)
         } catch (e) {
             setError(e.message)
             console.log(error)
         }
+    }
+
+    const getSignerAccount = async () => {
+        const web3Modal = new Web3Modal()
+        const connection = await web3Modal.connect()
+        const provider = new ethers.providers.Web3Provider(connection)
+        return provider.getSigner()
+    }
+
+    const getFormInput = () => {
+        let owners = []
+        const inputs = accountRef.current.childNodes
+        const required = requiredRef.current.value
+
+        if (required < 1 || required > numAccounts || required === "") {
+            throw new Error('Required number of accounts must be between 1 and the number of accounts')
+        }
+
+        for (let i = 0; i < inputs.length; i++) {
+            let inputValue = inputs[i].childNodes[1].childNodes[0].value
+            if (inputValue !== "") {
+                owners.push(inputValue)
+            } else {
+                throw new Error('Please remove any blank accounts')
+            }
+        }
+
+        return [owners, required]
+    }
+
+    const deployNewWallet = async (address, abi, signer, owners, required) => {
+        let factory = new ethers.Contract(address, abi, signer)
+        let tx = await factory.createWallet(owners, required)
+        let receipt = await tx.wait()
+        console.log(receipt)
     }
 
     const decrementAccounts = () => {
