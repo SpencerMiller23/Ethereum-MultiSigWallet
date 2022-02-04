@@ -13,6 +13,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [ ] Integrate database for storing off-chain data about wallets
 - [ ] List wallets in drawer that have the connected user as an owner
 - [ ] Implement wallet page
+- [ ] Improve test coverage
 
 ## Useful links
 
