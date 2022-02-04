@@ -22,6 +22,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [Ethers.js](https://docs.ethers.io/v5/)
 - [Waffle](https://ethereum-waffle.readthedocs.io/en/latest/)
 - [Next.js](https://nextjs.org/)
+- [Prisma](https://www.prisma.io/docs/)
 - [MaterialUI](https://mui.com/getting-started/installation/)
 
 ## Deploy locally
