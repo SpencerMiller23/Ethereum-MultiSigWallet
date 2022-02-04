@@ -20,5 +20,4 @@ contract Factory {
         nextId++;
         emit WalletCreated(address(multiSigWallet));
     }
-
 }

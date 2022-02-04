@@ -60,7 +60,7 @@ const CreateWallet = () => {
         let factory = new ethers.Contract(address, abi, signer)
         let tx = await factory.createWallet(owners, required)
         let receipt = await tx.wait()
-        console.log(receipt)
+        console.log(receipt.events[0].args[0])
     }
 
     const decrementAccounts = () => {
