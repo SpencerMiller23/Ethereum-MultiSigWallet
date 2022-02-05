@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
-import prisma from '../lib/prisma';
-
 import { Button, Container, TextField } from '@mui/material'
 import { Box, spacing } from '@mui/system'
 
@@ -13,6 +11,7 @@ import Factory from '../../artifacts/contracts/Factory.sol/Factory.json'
 import { factoryAddress } from '../../config'
 
 const CreateWallet = () => {
+    const nameRef = useRef(null)
     const accountRef = useRef(null)
     const requiredRef = useRef(null)
     const [error, setError] = useState()
@@ -20,10 +19,11 @@ const CreateWallet = () => {
 
     const createWalletHandler = async () => {
         try {
-            const signer = await getSignerAccount();
-            let [owners, required] = getFormInput();
+            const signer = await getSignerAccount()
+            let [name, owners, required] = getFormInput()
 
-            await deployNewWallet(factoryAddress, Factory.abi, signer, owners, required)
+            const newWalletAddress = await deployNewWallet(factoryAddress, Factory.abi, signer, owners, required)
+            submitNewWallet(name, newWalletAddress, owners)
         } catch (e) {
             setError(e.message)
             console.log(error)
@@ -39,8 +39,13 @@ const CreateWallet = () => {
 
     const getFormInput = () => {
         let owners = []
+        const name = nameRef.current.value
         const inputs = accountRef.current.childNodes
         const required = requiredRef.current.value
+
+        if (name === '') {
+            throw new Error('Please enter a name for the wallet')
+        }
 
         if (required < 1 || required > numAccounts || required === "") {
             throw new Error('Required number of accounts must be between 1 and the number of accounts')
@@ -55,14 +60,23 @@ const CreateWallet = () => {
             }
         }
 
-        return [owners, required]
+        return [name, owners, required]
     }
 
     const deployNewWallet = async (address, abi, signer, owners, required) => {
         let factory = new ethers.Contract(address, abi, signer)
         let tx = await factory.createWallet(owners, required)
         let receipt = await tx.wait()
-        console.log(receipt.events[0].args[0])
+        return receipt.events[0].args[0]
+    }
+
+    const submitNewWallet = async (name, address, owners) => {
+        const body = { name, address, owners }
+        await fetch('/api/wallets', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        })
     }
 
     const decrementAccounts = () => {
@@ -74,6 +88,7 @@ const CreateWallet = () => {
         <Box sx={{ backgroundColor: '#f5f5f5', width: '100%' }}>
             <Container maxWidth='lg'>
                 <h4>Create Wallet</h4>
+                <TextField label="Name" variant="outlined" inputRef={nameRef} sx={{ mb: '15px' }} />
                 <div className={styles.form__top} ref={accountRef}>
                     {Array.from(Array(numAccounts)).map((_, i) => (
                         <TextField
