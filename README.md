@@ -6,6 +6,11 @@ This is an open-source implementation of an Ethereum multi-sig wallet with a Rea
 
 Feel free to get started and make a contribution to this project, no matter how small!
 
+## Getting started
+
+1) Clone the repository by running `git clone https://github.com/SpencerMiller23/Ethereum-MultiSigWallet.git`
+2) Install dependencies by running `npm install`
+
 ## TO-DO
 
 - [ ] Add alerts for errors
@@ -27,6 +32,10 @@ Feel free to get started and make a contribution to this project, no matter how 
 
 ## Deploy locally
 
+### Prerequisites
+- PostgreSQL database on Heroku [(see this guide)](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
+
+### Deployment
 1) Open a terminal window and run `npx hardhat node`
 2) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
 3) Copy the address of the deployed factory contract and update the value stored in `config.js`
@@ -80,24 +89,6 @@ npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 ```
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Deploy on Vercel
 
