@@ -37,10 +37,11 @@ Feel free to get started and make a contribution to this project, no matter how 
 
 ### Deployment
 1) Update `DATABASE_URL` in the `.env` file
-2) Open a terminal window and run `npx hardhat node`
-3) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
-4) Copy the address of the deployed factory contract and update the value stored in `config.js`
-5) Open a third terminal window and run `npm run dev`
+2) Open a terminal window and run `npx prisma db push`
+3) Run `npx hardhat node`
+4) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
+5) Copy the address of the deployed factory contract and update the value stored in `config.js`
+6) Open a third terminal window and run `npm run dev`
 
 ## Testing
 

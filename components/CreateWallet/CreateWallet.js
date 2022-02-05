@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
+import prisma from '../lib/prisma';
+
 import { Button, Container, TextField } from '@mui/material'
 import { Box, spacing } from '@mui/system'
 
