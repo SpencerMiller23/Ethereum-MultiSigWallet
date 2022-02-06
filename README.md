@@ -28,6 +28,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [Waffle](https://ethereum-waffle.readthedocs.io/en/latest/)
 - [Next.js](https://nextjs.org/)
 - [Prisma](https://www.prisma.io/docs/)
+- [Redux Toolkit](https://redux-toolkit.js.org/usage/usage-guide)
 - [MaterialUI](https://mui.com/getting-started/installation/)
 
 ## Deploy locally
