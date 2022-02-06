@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { setAccount } from './walletSlice'
 
 import Button from '@mui/material/Button';
 
 import styles from './ConnectWallet.module.css'
 
 const ConnectWallet = () => {
-    const [account, setAccount] = useState()
+    const account = useSelector(state => state.wallet.account)
     const [error, setError] = useState()
+
+    const dispatch = useDispatch()
 
     const connectWalletHandler = async () => {
         try {
@@ -24,7 +29,7 @@ const ConnectWallet = () => {
 
     const accountChangedHandler = async (signer) => {
         const account = await signer.getAddress()
-        setAccount(account)
+        dispatch(setAccount({ account }))
     }
 
     return(
