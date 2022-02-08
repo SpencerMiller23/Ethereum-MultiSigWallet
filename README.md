@@ -16,7 +16,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [ ] Add alerts for errors
 - [x] Add redux for handling global state
 - [x] Integrate database for storing off-chain data about wallets
-- [ ] List wallets in drawer that have the connected user as an owner
+- [x] List wallets in drawer that have the connected user as an owner
 - [ ] Implement wallet page
 - [ ] Improve test coverage
 
