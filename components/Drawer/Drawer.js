@@ -26,7 +26,7 @@ const Drawer = () => {
       <h4>Wallets</h4>
       <List>
         {wallets.map((wallet, idx) => (
-          <ListItem key={idx} disablePadding>
+          <ListItem className={styles.listItem} key={idx} disablePadding>
             <ListItemButton>
               <ListItemText primary={wallet.name} secondary={wallet.address} />
             </ListItemButton>

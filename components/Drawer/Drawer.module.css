@@ -2,3 +2,15 @@
     width: 240px;
     height: calc(100vh - 64px);
 }
+
+.drawer__container h4 {
+    padding: 0px 16px;
+}
+
+.listItem, .listItem * {
+    max-width: 100%;
+}
+
+.listItem p {
+    overflow-x: hidden;
+}
