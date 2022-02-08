@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const walletSlice = createSlice({
-  name: 'wallet',
+export const accountSlice = createSlice({
+  name: 'account',
   initialState: {
     account: null,
   },
@@ -13,6 +13,6 @@ export const walletSlice = createSlice({
 })
 
 // each case under reducers becomes an action
-export const { setAccount } = walletSlice.actions
+export const { setAccount } = accountSlice.actions
 
-export default walletSlice.reducer
+export default accountSlice.reducer

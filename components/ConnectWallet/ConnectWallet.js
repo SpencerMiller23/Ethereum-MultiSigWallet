@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setAccount } from './walletSlice'
+import { setAccount } from './accountSlice'
 
 import Button from '@mui/material/Button';
 

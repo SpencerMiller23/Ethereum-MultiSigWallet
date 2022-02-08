@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import walletReducer from './components/ConnectWallet/walletSlice'
+import accountReducer from './components/ConnectWallet/accountSlice'
 
 export default configureStore({
   reducer: {
-    wallet: walletReducer,
+    account: accountReducer,
   }
 })

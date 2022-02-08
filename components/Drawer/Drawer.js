@@ -7,7 +7,7 @@ import { Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/mate
 import styles from './Drawer.module.css'
 
 const Drawer = () => {
-  const account = useSelector(state => state.wallet.account)
+  const account = useSelector(state => state.account.account)
   const [wallets, setWallets] = useState([])
 
   useEffect(async () => {
