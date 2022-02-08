@@ -4,15 +4,21 @@ const prisma = new PrismaClient();
 
 export default async function handle(req, res) {
   if (req.method === "POST") {
-    const { name, address, owners } = req.body;
+    const { walletName, walletAddress, walletOwners } = req.body;
 
-    const result = await prisma.wallet.create({
-      data: {
-        name: name,
-        address: address,
-        owners: owners,
-      },
-    });
-    res.json(result);
+    try {
+      const result = await prisma.wallet.create({
+        data: {
+          name: walletName,
+          address: walletAddress,
+          owners: walletOwners,
+        },
+      });
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(500).json(error);
+    } finally {
+      await prisma.$disconnect();
+    }
   }
 }

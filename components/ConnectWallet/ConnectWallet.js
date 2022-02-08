@@ -3,14 +3,14 @@ import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setAccount } from './accountSlice'
+import { setAccount } from '../../reducers/accountSlice'
 
 import Button from '@mui/material/Button';
 
 import styles from './ConnectWallet.module.css'
 
 const ConnectWallet = () => {
-    const account = useSelector(state => state.wallet.account)
+    const account = useSelector(state => state.account.account)
     const [error, setError] = useState()
 
     const dispatch = useDispatch()

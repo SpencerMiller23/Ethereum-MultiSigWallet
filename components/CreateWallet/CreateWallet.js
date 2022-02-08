@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
+import { useDispatch } from 'react-redux'
+import { setWallets } from '../../reducers/walletsSlice'
+
 import { Button, Container, TextField } from '@mui/material'
 import { Box, spacing } from '@mui/system'
 
@@ -16,6 +19,8 @@ const CreateWallet = () => {
     const requiredRef = useRef(null)
     const [error, setError] = useState()
     const [numAccounts, setNumAccounts] = useState(1)
+
+    const dispatch = useDispatch()
 
     const createWalletHandler = async () => {
         try {
@@ -70,18 +75,24 @@ const CreateWallet = () => {
         return receipt.events[0].args[0]
     }
 
-    const submitNewWallet = async (name, address, owners) => {
-        const body = { name, address, owners }
+    const submitNewWallet = async (walletName, walletAddress, walletOwners) => {
+        const body = { walletName, walletAddress, walletOwners }
         await fetch('/api/wallets', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
         })
+        .then(res => {
+            if (res.status === 200) {
+                dispatch(setWallets({ name: walletName, address: walletAddress }))
+            }
+        })
     }
 
     const decrementAccounts = () => {
-        if (numAccounts > 1)
+        if (numAccounts > 1) {
             setNumAccounts(numAccounts - 1)
+        }
     }
 
     return (

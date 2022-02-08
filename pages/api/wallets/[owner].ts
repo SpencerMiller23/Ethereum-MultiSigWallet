@@ -6,13 +6,19 @@ export default async function handle(req, res) {
     if (req.method === "GET") {
         const { owner } = req.query
 
-        const wallets = await prisma.wallet.findMany({
-            where: { 
-                owners: {
-                    has: owner,
+        try {
+            const wallets = await prisma.wallet.findMany({
+                where: { 
+                    owners: {
+                        has: owner,
+                    }
                 }
-            }
-        })
-        res.json(wallets)
+            })
+            res.json(wallets)
+        } catch (error) {
+            res.status(500).json(error)
+        } finally {
+            await prisma.$disconnect()
+        }
     }
 }
