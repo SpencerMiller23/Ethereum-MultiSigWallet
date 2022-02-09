@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setWallets } from '../../reducers/walletsSlice'
 
+import Link from 'next/link'
 import { Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
 
 import styles from './Drawer.module.css'
@@ -32,9 +33,11 @@ const Drawer = () => {
       <List>
         {wallets.map((wallet, idx) => (
           <ListItem className={styles.listItem} key={idx} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={wallet.name} secondary={wallet.address} />
-            </ListItemButton>
+            <Link href={`/${wallet.address}`}>
+              <ListItemButton>
+                <ListItemText primary={wallet.name} secondary={wallet.address} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
