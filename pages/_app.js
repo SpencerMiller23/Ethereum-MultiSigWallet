@@ -5,6 +5,8 @@ import '../styles/globals.css'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+import { Layout } from '../components/Layout'
+
 const theme = createTheme({
   palette: {
     secondary: {
@@ -17,7 +19,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </Provider>
   )
