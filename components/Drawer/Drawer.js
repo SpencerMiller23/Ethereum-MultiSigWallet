@@ -20,7 +20,6 @@ const Drawer = () => {
     })
     const walletsJSON = await deployedWallets.json()
     walletsJSON.forEach(wallet => {
-      console.log(wallet)
       dispatch(setWallets(wallet))
     })
   }, [account])

@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from '../../../lib/prisma'
 
 export default async function handle(req, res) {
     if (req.method === "GET") {
@@ -17,8 +15,6 @@ export default async function handle(req, res) {
             res.json(wallets)
         } catch (error) {
             res.status(500).json(error)
-        } finally {
-            await prisma.$disconnect()
         }
     }
 }
