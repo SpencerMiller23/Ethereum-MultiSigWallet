@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal'
 import { useDispatch } from 'react-redux'
 import { setWallets } from '../../reducers/walletsSlice'
 
-import { Box, Button, TextField } from '@mui/material'
+import { Paper, Button, TextField } from '@mui/material'
 import { spacing } from '@mui/system'
 
 import styles from './CreateWallet.module.css'
@@ -97,7 +97,7 @@ const CreateWallet = () => {
 
     return (
         <div>
-            <Box sx={{ backgroundColor: 'light.main', p: '20px' }}>
+            <Paper sx={{ backgroundColor: 'light.main', p: '20px' }}>
                 <TextField label="Name" variant="outlined" inputRef={nameRef} sx={{ mb: '15px' }} />
                 <div className={styles.form__top} ref={accountRef}>
                     {Array.from(Array(numAccounts)).map((_, i) => (
@@ -117,7 +117,7 @@ const CreateWallet = () => {
                     <TextField label="Required" variant="outlined" inputRef={requiredRef} />
                     <Button variant="contained" color="primary" onClick={createWalletHandler}>Create wallet</Button>
                 </div>
-            </Box>
+            </Paper>
         </div>
     )
 }

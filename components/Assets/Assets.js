@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { ethers } from 'ethers'
 
-import { Box, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
+import { Paper, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
 
 import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSigWallet.json'
 
@@ -21,7 +21,7 @@ const Assets = ({ wallet }) => {
 
     return (
         <div>
-            <Box sx={{ backgroundColor: 'light.main' }}>
+            <Paper sx={{ backgroundColor: 'light.main' }}>
                 <TableContainer>
                     <Table>
                         <TableHead>
@@ -38,7 +38,7 @@ const Assets = ({ wallet }) => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </Box>
+            </Paper>
         </div>
     )
 }
