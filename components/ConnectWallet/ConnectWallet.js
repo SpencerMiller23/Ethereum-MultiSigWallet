@@ -35,7 +35,7 @@ const ConnectWallet = () => {
     return(
         <div className={styles.connectWallet__container}>
             <p className={styles.address}>{account}</p>
-            <Button variant="contained" color="light" onClick={connectWalletHandler}>Connect</Button>
+            <Button className={styles.btn} variant="contained" color="light" onClick={connectWalletHandler}>Connect</Button>
         </div>
     )
 };

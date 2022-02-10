@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal'
 import { useDispatch } from 'react-redux'
 import { setWallets } from '../../reducers/walletsSlice'
 
-import { Button, TextField } from '@mui/material'
+import { Box, Button, TextField } from '@mui/material'
 import { spacing } from '@mui/system'
 
 import styles from './CreateWallet.module.css'
@@ -97,28 +97,29 @@ const CreateWallet = () => {
 
     return (
         <div>
-            <h4>Create Wallet</h4>
-            <TextField label="Name" variant="outlined" inputRef={nameRef} sx={{ mb: '15px' }} />
-            <div className={styles.form__top} ref={accountRef}>
-                {Array.from(Array(numAccounts)).map((_, i) => (
-                    <TextField
-                        sx={{ mb: '15px' }}
-                        key={i}
-                        label={`Account #${i + 1}`}
-                        variant="outlined"
-                    />
-                ))}
-            </div>
-            <div className={styles.button__container}>
-                <Button variant="outlined" color="primary" onClick={decrementAccounts}>Remove owner</Button>
-                <Button variant="contained" color="primary" onClick={() => setNumAccounts(numAccounts + 1)}>Add owner</Button>
-            </div>
-            <div className={styles.form__bottom}>
-                <TextField label="Required" variant="outlined" inputRef={requiredRef} />
-                <Button variant="contained" color="primary" onClick={createWalletHandler}>Create wallet</Button>
-            </div>
+            <Box sx={{ backgroundColor: 'light.main', p: '20px' }}>
+                <TextField label="Name" variant="outlined" inputRef={nameRef} sx={{ mb: '15px' }} />
+                <div className={styles.form__top} ref={accountRef}>
+                    {Array.from(Array(numAccounts)).map((_, i) => (
+                        <TextField
+                            sx={{ mb: '15px' }}
+                            key={i}
+                            label={`Account #${i + 1}`}
+                            variant="outlined"
+                        />
+                    ))}
+                </div>
+                <div className={styles.button__container}>
+                    <Button variant="outlined" color="primary" onClick={decrementAccounts}>Remove owner</Button>
+                    <Button variant="contained" color="primary" onClick={() => setNumAccounts(numAccounts + 1)}>Add owner</Button>
+                </div>
+                <div className={styles.form__bottom}>
+                    <TextField label="Required" variant="outlined" inputRef={requiredRef} />
+                    <Button variant="contained" color="primary" onClick={createWalletHandler}>Create wallet</Button>
+                </div>
+            </Box>
         </div>
     )
-};
+}
 
 export default CreateWallet
