@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useRouter } from 'next/router'
 
@@ -11,7 +11,7 @@ const wallet = () => {
     return (
         <div>
             <h4>Wallet: {wallet}</h4>
-            <Assets />
+            <Assets wallet={wallet} />
         </div>
     )
 }
