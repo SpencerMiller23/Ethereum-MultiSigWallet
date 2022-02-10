@@ -2,13 +2,16 @@ import React, { useEffect } from 'react'
 
 import { useRouter } from 'next/router'
 
+import { Assets } from '../components/Assets'
+
 const wallet = () => {
     const router = useRouter()
     const { wallet } = router.query
     
     return (
         <div>
-            <p>{wallet}</p>
+            <h4>Wallet: {wallet}</h4>
+            <Assets />
         </div>
     )
 }
