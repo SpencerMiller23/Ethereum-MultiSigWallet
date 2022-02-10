@@ -4,8 +4,6 @@ import { ethers } from 'ethers'
 
 import { Paper, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
 
-import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSigWallet.json'
-
 const Assets = ({ wallet }) => {
     const [balance, setBalance] = useState(0)
 
