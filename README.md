@@ -19,6 +19,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [x] Integrate database for storing off-chain data about wallets
 - [x] List wallets in drawer that have the connected user as an owner
 - [ ] Implement wallet page
+- [ ] Add ability to receive other ERC20 tokens
 - [ ] Improve test coverage
 
 ## Useful links
@@ -35,6 +36,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 ## Deploy locally
 
 ### Prerequisites
+- Browser-based Ethereum wallet [(ex: MetaMask)](https://metamask.io/)
 - PostgreSQL database on Heroku [(see this guide)](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 
 ### Deployment
