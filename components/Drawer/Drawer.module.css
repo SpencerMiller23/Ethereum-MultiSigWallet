@@ -7,7 +7,11 @@
     padding: 0px 16px;
 }
 
-.listItem, .listItem * {
+.listItemBold * {
+    font-weight: bold;
+}
+
+.listItem, .listItem *, .listItemBold, .listItemBold * {
     max-width: 100%;
 }
 

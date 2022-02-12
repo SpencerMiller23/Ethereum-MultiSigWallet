@@ -27,7 +27,15 @@ const Drawer = () => {
 
   return (
     <div className={styles.drawer__container}>
-      <h4>Create Wallet</h4>
+      <List>
+        <ListItem className={styles.listItemBold} disablePadding>
+          <Link href="/">
+            <ListItemButton>
+              <ListItemText primary="Create Wallet" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
+      </List>
       <Divider/>
       <h4>Wallets</h4>
       <List>
