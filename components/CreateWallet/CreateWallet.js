@@ -97,7 +97,8 @@ const CreateWallet = () => {
 
     return (
         <div>
-            <Paper sx={{ backgroundColor: 'light.main', p: '20px' }}>
+            <Paper sx={{ backgroundColor: 'light.main', p: '20px', mt: '20px' }}>
+                <h4 className={styles.heading}>Create Wallet</h4>
                 <TextField label="Name" variant="outlined" inputRef={nameRef} sx={{ mb: '15px' }} />
                 <div className={styles.form__top} ref={accountRef}>
                     {Array.from(Array(numAccounts)).map((_, i) => (

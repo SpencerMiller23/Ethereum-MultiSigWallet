@@ -1,3 +1,7 @@
+.heading {
+    margin-top: 0;
+}
+
 .form__top {
     display: flex;
     flex-direction: column;
