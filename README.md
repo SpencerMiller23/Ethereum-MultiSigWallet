@@ -8,9 +8,9 @@ Feel free to get started and make a contribution to this project, no matter how 
 
 ## Getting started
 
-1) Clone the repository by running `git clone https://github.com/SpencerMiller23/Ethereum-MultiSigWallet.git`
-2) Install dependencies by running `npm install`
-3) Compile the contracts by running `npx hardhat compile`
+1) Clone the repository: `git clone https://github.com/SpencerMiller23/Ethereum-MultiSigWallet.git`
+2) Install dependencies: `npm install`
+3) Compile the contracts: `npx hardhat compile`
 
 ## TO-DO
 
