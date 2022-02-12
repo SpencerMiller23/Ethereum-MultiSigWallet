@@ -28,6 +28,7 @@ const CreateWallet = () => {
 
             const newWalletAddress = await deployNewWallet(factoryAddress, Factory.abi, signer, owners, required)
             submitNewWallet(name, newWalletAddress, owners)
+            clearInputs()
         } catch (e) {
             setError(e.message)
             console.log(error)
@@ -86,6 +87,12 @@ const CreateWallet = () => {
                 dispatch(setWallets({ name: walletName, address: walletAddress }))
             }
         })
+    }
+
+    const clearInputs = () => {
+        nameRef.current.value = ''
+        accountRef.current.innerHTML = ''
+        requiredRef.current.value = ''
     }
 
     const decrementAccounts = () => {

@@ -15,6 +15,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 ## TO-DO
 
 - [ ] Add alerts for errors
+- [ ] Add loading indicators
 - [x] Add redux for handling global state
 - [x] Integrate database for storing off-chain data about wallets
 - [x] List wallets in drawer that have the connected user as an owner

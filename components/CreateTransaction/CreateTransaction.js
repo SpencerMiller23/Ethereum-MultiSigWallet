@@ -20,6 +20,7 @@ const CreateTransaction = ({ address }) => {
       const [recipient, value, data] = getFormInput()
       const txReceipt = await submitTransaction(signer, address, MultiSigWallet.abi, recipient, value, data)
       console.log(txReceipt)
+      clearInputs()
     } catch (err) {
       console.log(err)
     }
@@ -44,6 +45,12 @@ const CreateTransaction = ({ address }) => {
     const tx = await wallet.submit(recipient, value, calldata)
     const receipt = await tx.wait()
     return receipt.events[0].args[0]
+  }
+
+  const clearInputs = () => {
+    recipientRef.current.value = ''
+    valueRef.current.value = ''
+    dataRef.current.value = ''
   }
 
   return (
