@@ -18,7 +18,7 @@ const wallet = () => {
             <Assets wallet={wallet} />
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                    <CreateTransaction />
+                    <CreateTransaction address={wallet} />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <History />

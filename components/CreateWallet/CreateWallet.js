@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux'
 import { setWallets } from '../../reducers/walletsSlice'
 
 import { Paper, Button, TextField } from '@mui/material'
-import { spacing } from '@mui/system'
 
 import styles from './CreateWallet.module.css'
 
