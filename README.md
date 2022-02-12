@@ -43,9 +43,11 @@ Feel free to get started and make a contribution to this project, no matter how 
 1) Update `DATABASE_URL` in the `.env` file
 2) Open a terminal window and run `npx prisma db push`
 3) Run `npx hardhat node`
-4) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
-5) Copy the address of the deployed factory contract and update the value stored in `config.js`
-6) Open a third terminal window and run `npm run dev`
+4) Create a new wallet by importing the secret key from one of the Hardhat accounts
+5) Open a second terminal window and run `npx hardhat run scripts/deploy.js --network localhost`
+6) Change networks in Metamask to Localhost8545
+7) Copy the address of the deployed factory contract and update the value stored in `config.js`
+8) Open a third terminal window and run `npm run dev`
 
 ## Testing
 
