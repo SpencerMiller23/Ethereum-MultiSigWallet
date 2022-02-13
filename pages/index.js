@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={6}>
           <CreateWallet/>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <Overview/>
         </Grid>
       </Grid>

@@ -17,7 +17,7 @@ const CreateWallet = () => {
     const accountRef = useRef(null)
     const requiredRef = useRef(null)
     const [error, setError] = useState()
-    const [numAccounts, setNumAccounts] = useState(1)
+    const [numAccounts, setNumAccounts] = useState(2)
 
     const dispatch = useDispatch()
 
