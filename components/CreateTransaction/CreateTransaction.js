@@ -55,7 +55,7 @@ const CreateTransaction = ({ address }) => {
 
   return (
     <div>
-        <Paper sx={{ backgroundColor: 'light.main', p: '20px', mt: '20px' }}>
+        <Paper sx={{ backgroundColor: 'light.main', p: '20px' }}>
             <h4 className={styles.heading}>New Transaction</h4>
             <TextField label="Recipient" variant="outlined" inputRef={recipientRef} sx={{ mb: '15px' }} fullWidth />
             <br />
