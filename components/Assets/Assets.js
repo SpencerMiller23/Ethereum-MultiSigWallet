@@ -8,14 +8,16 @@ const Assets = ({ wallet }) => {
     const [balance, setBalance] = useState(0)
 
     useEffect(async () => {
-        try {
-            const provider = new ethers.providers.Web3Provider(window.web3.currentProvider)
-            const ethBalance = await provider.getBalance(wallet)
-            setBalance(ethers.utils.formatEther(ethBalance))
-        } catch (err) {
-            console.log(err)
+        if (wallet) {
+            try {
+                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                const ethBalance = await provider.getBalance(wallet)
+                setBalance(ethers.utils.formatEther(ethBalance))
+            } catch (err) {
+                console.log(err)
+            }
         }
-    })
+    }, [wallet])
 
     return (
         <div>
