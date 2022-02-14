@@ -101,4 +101,8 @@ contract MultiSigWallet {
         approved[_txId][msg.sender] = false;
         emit Revoke(msg.sender, _txId);
     }
+
+    function getTransactions() external view returns (Transaction[] memory) {
+        return transactions;
+    }
 }
