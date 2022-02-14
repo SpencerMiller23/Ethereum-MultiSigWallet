@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
 import { Paper, TextField, Button } from '@mui/material'
+import InputAdornment from '@mui/material/InputAdornment';
 
 import styles from './CreateTransaction.module.css'
 
@@ -37,7 +38,12 @@ const CreateTransaction = ({ address }) => {
     const recipient = recipientRef.current.value
     const value = valueRef.current.value
     const data = dataRef.current.value
-    return [recipient, value, data]
+
+    if (!recipient || !value || !data) {
+      throw new Error('Please fill in all fields')
+    }
+
+    return [recipient, ethers.utils.parseEther(value), data]
   }
 
   const submitTransaction = async (signer, addr, abi, recipient, value, calldata) => {
@@ -59,7 +65,16 @@ const CreateTransaction = ({ address }) => {
             <h4 className={styles.heading}>New Transaction</h4>
             <TextField label="Recipient" variant="outlined" inputRef={recipientRef} sx={{ mb: '15px' }} fullWidth />
             <br />
-            <TextField label="Value" variant="outlined" inputRef={valueRef} sx={{ mb: '15px' }} fullWidth />
+            <TextField
+              label="Value"
+              variant="outlined"
+              inputRef={valueRef}
+              sx={{ mb: '15px' }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">ETH</InputAdornment>,
+              }}
+              fullWidth
+            />
             <br />
             <TextField label="Calldata" variant="outlined" inputRef={dataRef} sx={{ mb: '15px' }} fullWidth />
             <br />
