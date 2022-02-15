@@ -5,6 +5,7 @@ contract MultiSigWallet {
     event Deposit(address indexed sender, uint amount);
     event Submit(uint indexed txId);
     event Approve(address indexed owner, uint indexed txId);
+    event Reject(address indexed owner, uint indexed txId);
     event Revoke(address indexed owner, uint indexed txId);
     event Execute(uint indexed txId);
 
@@ -47,6 +48,11 @@ contract MultiSigWallet {
 
     modifier notApproved(uint _txId) {
         require(!(approval[_txId][msg.sender] == Approval.Approved), "tx already approved");
+        _;
+    }
+
+    modifier notRejected(uint _txId) {
+        require(!(approval[_txId][msg.sender] == Approval.Rejected), "tx already rejected");
         _;
     }
 
@@ -113,6 +119,11 @@ contract MultiSigWallet {
         require(approval[_txId][msg.sender] == Approval.Approved, "tx not approved");
         approval[_txId][msg.sender] = Approval.Pending;
         emit Revoke(msg.sender, _txId);
+    }
+
+    function reject(uint _txId) external onlyOwner txExists(_txId) notRejected(_txId) isPending(_txId) {
+        approval[_txId][msg.sender] = Approval.Rejected;
+        emit Reject(msg.sender, _txId);
     }
 
     function getTransactions() external view returns (Transaction[] memory) {
