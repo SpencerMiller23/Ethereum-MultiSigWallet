@@ -26,7 +26,14 @@ contract MultiSigWallet {
     uint public required;
 
     Transaction[] public transactions;
-    mapping(uint => mapping(address => bool)) public approved;
+
+    enum Approval {
+        Pending,
+        Approved,
+        Rejected
+    }
+
+    mapping(uint => mapping(address => Approval)) public approval;
 
     modifier onlyOwner() {
         require(isOwner[msg.sender], "Not an owner");
@@ -39,7 +46,7 @@ contract MultiSigWallet {
     }
 
     modifier notApproved(uint _txId) {
-        require(!approved[_txId][msg.sender], "tx already approved");
+        require(!(approval[_txId][msg.sender] == Approval.Approved), "tx already approved");
         _;
     }
 
@@ -79,13 +86,13 @@ contract MultiSigWallet {
     }
 
     function approve(uint _txId) external onlyOwner txExists(_txId) notApproved(_txId) isPending(_txId) {
-        approved[_txId][msg.sender] = true;
+        approval[_txId][msg.sender] = Approval.Approved;
         emit Approve(msg.sender, _txId);
     }
 
     function _getApprovalCount(uint _txId) private view returns (uint count) {
         for (uint i; i < owners.length; i++) {
-            if (approved[_txId][owners[i]]) {
+            if (approval[_txId][owners[i]] == Approval.Approved) {
                 count += 1;
             }
         }
@@ -103,8 +110,8 @@ contract MultiSigWallet {
     }
 
     function revoke(uint _txId) external onlyOwner txExists(_txId) isPending(_txId) {
-        require(approved[_txId][msg.sender], "tx not approved");
-        approved[_txId][msg.sender] = false;
+        require(approval[_txId][msg.sender] == Approval.Approved, "tx not approved");
+        approval[_txId][msg.sender] = Approval.Pending;
         emit Revoke(msg.sender, _txId);
     }
 
