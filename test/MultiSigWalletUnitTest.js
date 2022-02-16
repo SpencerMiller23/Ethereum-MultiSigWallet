@@ -4,7 +4,6 @@ const { ethers } = require("hardhat");
 describe("MultiSigWallet", function () {
 
   beforeEach(async function () {
-    // Deploy the contract
     Contract = await ethers.getContractFactory("MultiSigWallet");
     [owner, ...accounts] = await ethers.getSigners();
     wallet = await Contract.deploy([owner.address, accounts[0].address, accounts[1].address], 2);
@@ -31,6 +30,17 @@ describe("MultiSigWallet", function () {
       });
 
       expect(await ethers.provider.getBalance(wallet.address)).to.be.eq(ethers.utils.parseEther("1.5"));
+    });
+  });
+
+  describe("Transactions", function () {
+    it("Should create a new transaction", async function () {
+      await wallet.connect(owner).submit(accounts[0].address, ethers.utils.parseEther("1.5"), "0x");
+      const tx = await wallet.transactions(0);
+      expect(tx.to).to.be.eq(accounts[0].address);
+      expect(tx.value).to.be.eq(ethers.utils.parseEther("1.5"));
+      expect(tx.data).to.be.eq("0x");
+      expect(tx.status).to.be.eq(0);
     });
   });
 
