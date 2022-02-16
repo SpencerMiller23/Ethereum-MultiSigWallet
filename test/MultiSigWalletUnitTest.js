@@ -23,4 +23,15 @@ describe("MultiSigWallet", function () {
     });
   });
 
+  describe("Receive", function () {
+    it("Return balance", async function () {
+      await owner.sendTransaction({
+        to: wallet.address,
+        value: ethers.utils.parseEther("1.5"),
+      });
+
+      expect(await ethers.provider.getBalance(wallet.address)).to.be.eq(ethers.utils.parseEther("1.5"));
+    });
+  });
+
 });
