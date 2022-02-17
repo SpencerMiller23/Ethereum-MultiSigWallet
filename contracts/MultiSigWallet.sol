@@ -115,6 +115,7 @@ contract MultiSigWallet {
         emit Execute(_txId);
     }
 
+    // TODO: Update this function to use the transaction status enum for revoking approvals and rejections
     function revoke(uint _txId) external onlyOwner txExists(_txId) isPending(_txId) {
         require(approval[_txId][msg.sender] == Approval.Approved, "tx not approved");
         approval[_txId][msg.sender] = Approval.Pending;

@@ -21,6 +21,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [x] List wallets in drawer that have the connected user as an owner
 - [ ] Implement wallet page
 - [ ] Add ability to receive other ERC20 tokens
+- [ ] Add automated checks for rejected transactions
 - [ ] Improve test coverage
 
 ## Useful links
