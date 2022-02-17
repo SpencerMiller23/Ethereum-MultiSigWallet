@@ -42,6 +42,17 @@ describe("MultiSigWallet", function () {
       expect(tx.data).to.be.eq("0x");
       expect(tx.status).to.be.eq(0);
     });
+
+    it("Should allow owners to approve or reject a transaction", async function () {
+      await wallet.connect(owner).submit(accounts[0].address, ethers.utils.parseEther("1.5"), "0x");
+      const tx = await wallet.transactions(0);
+      await wallet.connect(owner).approve(0);
+      await wallet.connect(accounts[0]).approve(0);
+      await wallet.connect(accounts[1]).reject(0);
+      expect(await wallet.approval(0, owner.address)).to.be.eq(1);
+      expect(await wallet.approval(0, accounts[0].address)).to.be.eq(1);
+      expect(await wallet.approval(0, accounts[1].address)).to.be.eq(2);
+    });
   });
 
 });
