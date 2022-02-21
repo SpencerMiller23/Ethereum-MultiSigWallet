@@ -1,10 +1,15 @@
 import React from 'react'
 
+import { ethers } from 'ethers'
+import Web3Modal from 'web3modal'
+
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const Actions = ({ idx }) => {
+import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSigWallet.json'
+
+const Actions = ({ address, idx }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -16,23 +21,34 @@ const Actions = ({ idx }) => {
         setAnchorEl(null);
     };
 
-    const approveTransaction = async (idx) => {
+    const approveTransaction = async (txIdx) => {
         handleClose()
         try {
             const signer = await getSignerAccount()
             const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
-            await wallet.approve(ethers.BigNumber.from(idx))
+            await wallet.approve(ethers.BigNumber.from(txIdx))
         } catch (err) {
             console.log(err)
         }
     }
 
-    const rejectTransaction = async (idx) => {
+    const rejectTransaction = async (txIdx) => {
         handleClose()
         try {
             const signer = await getSignerAccount()
             const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
-            await wallet.reject(ethers.BigNumber.from(idx))
+            await wallet.reject(ethers.BigNumber.from(txIdx))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const executeTransaction = async (txIdx) => {
+        handleClose()
+        try {
+            const signer = await getSignerAccount()
+            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
+            await wallet.execute(ethers.BigNumber.from(txIdx))
         } catch (err) {
             console.log(err)
         }
@@ -68,7 +84,7 @@ const Actions = ({ idx }) => {
             >
                 <MenuItem onClick={() => rejectTransaction(idx)}>Reject</MenuItem>
                 <MenuItem onClick={() => approveTransaction(idx)}>Approve</MenuItem>
-                <MenuItem onClick={handleClose}>Execute</MenuItem>
+                <MenuItem onClick={() => executeTransaction(idx)}>Execute</MenuItem>
             </Menu>
         </div>
     )

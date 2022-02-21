@@ -60,7 +60,7 @@ const TransactionQueue = ({ address }) => {
                                     <TableCell>{ethers.utils.formatEther(transaction.value)} ETH</TableCell>
                                     <TableCell>{transaction.data}</TableCell>
                                     <TableCell>
-                                        <Actions idx={transaction.idx} />
+                                        <Actions address={address} idx={transaction.idx} />
                                     </TableCell>
                                 </TableRow>
                             ))}
