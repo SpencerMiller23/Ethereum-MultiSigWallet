@@ -16,6 +16,7 @@ contract MultiSigWallet {
     }
 
     struct Transaction {
+        uint idx;
         address to;
         uint value;
         bytes data;
@@ -83,6 +84,7 @@ contract MultiSigWallet {
 
     function submit(address _to, uint _value, bytes calldata _data) external onlyOwner {
         transactions.push(Transaction({
+            idx: transactions.length,
             to: _to,
             value: _value,
             data: _data,
