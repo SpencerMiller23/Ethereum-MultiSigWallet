@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
 import { Paper, Button, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
+import { Actions } from '../Actions'
 
 import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSigWallet.json'
 
@@ -31,35 +32,11 @@ const TransactionQueue = ({ address }) => {
         }
     }
 
-    const approveTransaction = async (idx) => {
-        try {
-            const signer = await getSignerAccount()
-            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
-            await wallet.approve(ethers.BigNumber.from(idx))
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    const rejectTransaction = async (idx) => {
-        try {
-            const signer = await getSignerAccount()
-            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
-            await wallet.reject(ethers.BigNumber.from(idx))
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
     const getSignerAccount = async () => {
-        try {
-            const web3Modal = new Web3Modal()
-            const connection = await web3Modal.connect()
-            const provider = new ethers.providers.Web3Provider(connection)
-            return provider.getSigner()
-        } catch (err) {
-            console.log(err)
-        }
+        const web3Modal = new Web3Modal()
+        const connection = await web3Modal.connect()
+        const provider = new ethers.providers.Web3Provider(connection)
+        return provider.getSigner()
     }
 
     return (
@@ -83,8 +60,7 @@ const TransactionQueue = ({ address }) => {
                                     <TableCell>{ethers.utils.formatEther(transaction.value)} ETH</TableCell>
                                     <TableCell>{transaction.data}</TableCell>
                                     <TableCell>
-                                        <Button variant='contained' sx={{ mr: '10px' }} onClick={() => approveTransaction(transaction.idx)}>Approve</Button>
-                                        <Button variant='outlined' onClick={() => rejectTransaction(transaction.idx)}>Reject</Button>
+                                        <Actions idx={transaction.idx} />
                                     </TableCell>
                                 </TableRow>
                             ))}
