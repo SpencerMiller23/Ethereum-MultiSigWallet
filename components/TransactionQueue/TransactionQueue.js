@@ -20,13 +20,12 @@ const TransactionQueue = ({ address }) => {
 
     const fetchTransactions = async () => {
         try {
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            const wallet = new ethers.Contract(address, MultiSigWallet.abi, provider)
+            const signer = await getSignerAccount()
+            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
             const txs = (await wallet.getTransactions()).filter(tx => {
                 return tx.status === 0
             })
             setTransactions(txs)
-            console.log(txs)
         } catch (err) {
             console.log(err)
         }
@@ -34,11 +33,30 @@ const TransactionQueue = ({ address }) => {
 
     const approveTransaction = async (idx) => {
         try {
+            const signer = await getSignerAccount()
+            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
+            await wallet.approve(ethers.BigNumber.from(idx))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const rejectTransaction = async (idx) => {
+        try {
+            const signer = await getSignerAccount()
+            const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
+            await wallet.reject(ethers.BigNumber.from(idx))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const getSignerAccount = async () => {
+        try {
             const web3Modal = new Web3Modal()
             const connection = await web3Modal.connect()
             const provider = new ethers.providers.Web3Provider(connection)
-            const wallet = new ethers.Contract(address, MultiSigWallet.abi, provider.getSigner())
-            await wallet.approve(ethers.BigNumber.from(idx))
+            return provider.getSigner()
         } catch (err) {
             console.log(err)
         }
@@ -66,7 +84,7 @@ const TransactionQueue = ({ address }) => {
                                     <TableCell>{transaction.data}</TableCell>
                                     <TableCell>
                                         <Button variant='contained' sx={{ mr: '10px' }} onClick={() => approveTransaction(transaction.idx)}>Approve</Button>
-                                        <Button variant='outlined'>Reject</Button>
+                                        <Button variant='outlined' onClick={() => rejectTransaction(transaction.idx)}>Reject</Button>
                                     </TableCell>
                                 </TableRow>
                             ))}
