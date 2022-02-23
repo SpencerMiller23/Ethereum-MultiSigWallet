@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
-import { Paper, Button, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
+import { Paper, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
 import { Actions } from '../Actions'
 
 import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSigWallet.json'
