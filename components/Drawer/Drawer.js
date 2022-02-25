@@ -19,8 +19,7 @@ const Drawer = () => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
-    const walletsJSON = await deployedWallets.json()
-    walletsJSON.forEach(wallet => {
+    Object.keys(deployedWallets).forEach(wallet => {
       dispatch(setWallets(wallet))
     })
   }, [account])
