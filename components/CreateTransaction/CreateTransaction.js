@@ -1,5 +1,8 @@
 import React, { useRef } from 'react'
 
+import { useDispatch } from 'react-redux'
+import { setUpdates } from '../../reducers/updatesSlice'
+
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
@@ -15,6 +18,8 @@ const CreateTransaction = ({ address }) => {
   const valueRef = useRef(null)
   const dataRef = useRef(null)
 
+  const dispatch = useDispatch()
+
   const submitTransactionHandler = async () => {
     try {
       const signer = await getSignerAccount()
@@ -22,6 +27,7 @@ const CreateTransaction = ({ address }) => {
       const txReceipt = await submitTransaction(signer, address, MultiSigWallet.abi, recipient, value, data)
       console.log(txReceipt)
       clearInputs()
+      dispatch(setUpdates())
     } catch (err) {
       console.log(err)
     }

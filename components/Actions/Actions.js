@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { setUpdates } from '../../reducers/updatesSlice'
 
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
@@ -12,6 +14,8 @@ import MultiSigWallet from '../../artifacts/contracts/MultiSigWallet.sol/MultiSi
 const Actions = ({ address, idx }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+
+    const dispatch = useDispatch();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -49,6 +53,7 @@ const Actions = ({ address, idx }) => {
             const signer = await getSignerAccount()
             const wallet = new ethers.Contract(address, MultiSigWallet.abi, signer)
             await wallet.execute(ethers.BigNumber.from(txIdx))
+            dispatch(setUpdates())
         } catch (err) {
             console.log(err)
         }

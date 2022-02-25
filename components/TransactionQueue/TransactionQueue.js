@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
@@ -12,12 +13,13 @@ import styles from './TransactionQueue.module.css'
 
 const TransactionQueue = ({ address }) => {
     const [transactions, setTransactions] = useState([])
+    const updates = useSelector(state => state.updates.updates)
 
     useEffect(async () => {
         if (address) {
             await fetchTransactions()
         }
-    }, [address])
+    }, [address, updates])
 
     const fetchTransactions = async () => {
         try {

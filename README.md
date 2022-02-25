@@ -19,7 +19,7 @@ Feel free to get started and make a contribution to this project, no matter how 
 - [x] Add redux for handling global state
 - [x] Integrate database for storing off-chain data about wallets
 - [x] List wallets in drawer that have the connected user as an owner
-- [ ] Implement wallet page
+- [x] Implement wallet page
 - [ ] Add ability to receive other ERC20 tokens
 - [ ] Add automated checks for rejected transactions
 - [ ] Improve test coverage
