@@ -1,0 +1,8 @@
+.container {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #1976d2;
+    color: white;
+    padding: 10px;
+}

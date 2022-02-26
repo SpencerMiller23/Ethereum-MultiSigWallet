@@ -2,6 +2,7 @@ import React from 'react'
 
 import { MenuBar } from '../MenuBar'
 import { Drawer } from '../Drawer'
+import { Footer } from '../Footer'
 
 import { Container } from '@mui/material'
 import { Box } from '@mui/system'
@@ -16,6 +17,7 @@ const Layout = ({ children }) => {
                 <Container maxWidth='lg'>
                     {children}
                 </Container>
+                <Footer/>
             </Box>
         </div>
     </>
