@@ -1,10 +1,14 @@
 # Ethereum Multi-sig Wallet
 
+See it live [here](https://ethereum-multi-sig-wallet.vercel.app/)
+
+## Prerequisites
+1) Follow [this guide](https://devtonight.com/posts/metamask-testnet-wallet-setup-for-blockchain-development) to create an Ethereum wallet and switch to the Rinkeby Test Network
+2) Send yourself some test ETH [here](https://faucets.chain.link/rinkeby)
+
 ## Overview
 
 This is an open-source implementation of an Ethereum multi-sig wallet with a React-based UI. A multi-sig wallet is a cryptocurrency wallet that requires two or more private keys to sign and send a transaction. The purpose of this project is to encourage new Solidity developers to get started with open-source development.
-
-Feel free to get started and make a contribution to this project, no matter how small!
 
 ## Getting started
 
