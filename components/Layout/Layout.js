@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
         <MenuBar/>
         <div className="flex flex-row mt">
             <Drawer/>
-            <Box sx={{ backgroundColor: '#f5f5f5', width: '100%' }}>
+            <Box sx={{ backgroundColor: '#f5f5f5', width: '100%', position: 'relative' }}>
                 <Container maxWidth='lg'>
                     {children}
                 </Container>

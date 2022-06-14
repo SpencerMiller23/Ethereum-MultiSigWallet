@@ -1,8 +1,21 @@
 .container {
-    position: fixed;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     bottom: 0px;
     width: 100%;
     background-color: #1976d2;
     color: white;
     padding: 10px;
+}
+
+.container a {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 720px) {
+    .container {
+        flex-direction: row;
+    }
 }

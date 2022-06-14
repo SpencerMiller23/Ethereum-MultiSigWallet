@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\spenc\\Desktop\\Coding\\ethereum-multisig-wallet\\contracts\\Factory.sol": {
-      "lastModificationDate": 1643994750885,
+      "lastModificationDate": 1651435522613,
       "contentHash": "ec1c44d4827c7c8d786bc5fc049f6bae",
       "sourceName": "contracts/Factory.sol",
       "solcConfig": {
@@ -39,7 +39,7 @@
       ]
     },
     "C:\\Users\\spenc\\Desktop\\Coding\\ethereum-multisig-wallet\\contracts\\MultiSigWallet.sol": {
-      "lastModificationDate": 1645460113350,
+      "lastModificationDate": 1651435522613,
       "contentHash": "5897cdae899487bcbdeba48b1262c306",
       "sourceName": "contracts/MultiSigWallet.sol",
       "solcConfig": {
