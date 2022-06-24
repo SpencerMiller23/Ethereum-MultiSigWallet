@@ -9,10 +9,10 @@ const Overview = () => {
     <div>
         <Paper sx={{ backgroundColor: 'light.main', p: '20px', mt: '20px' }}>
             <h4 className={styles.heading}>Disclaimer</h4>
-            <p>This project is for demonstration purposes only and I do can not guarantee the security of the smart contract.</p>
+            <p>This project is for demonstration purposes only and I cannot guarantee the security of the smart contract.</p>
             <h4 className={styles.heading}>How it works</h4>
             <p>A multi-signature wallet is a cryptocurrency wallet that requires multiple signatures from multiple owners to perform a transaction.</p>
-            <p>These types of wallets help to mitigate security concerns that come with a signle private key mechanism.</p>
+            <p>These types of wallets help to mitigate security concerns that come with a single private key mechanism.</p>
             <p>Create a new multi-signature wallet by giving it a memorable name, and filling in the addresses of any number of owners along with the number of required signatures.</p>
             <h4 className={styles.heading}>How to use</h4>
             <p>Set up a new wallet (ex: <Link href='https://metamask.io/' target="_blank" underline='always'>Metamask</Link>)</p>
